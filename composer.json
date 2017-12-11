@@ -14,13 +14,13 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Tehcodedninja\\Teamroles": "src/"
+        "psr-4": {
+            "Tehcodedninja\\Teamroles\\": "src/"
         }
     },
     "minimum-stability": "dev",
     "require": {
-    	"mpociot/teamwork": "~4.0",
-            "laravel/framework": "~5.3"
+    	"mpociot/teamwork": "~5.0",
+            "laravel/framework": "~5.5"
     }
 }

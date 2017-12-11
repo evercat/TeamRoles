@@ -24,3 +24,4 @@ Route::group(['prefix' => 'teamroles', 'middleware'=>'auth'], function() {
     Route::get('{team_id}/members/{user_id}/edit', 'TeamRoleMembersController@edit')->name('teamroles.members.edit');
     Route::put('{team_id}/members/{user_id}/edit', 'TeamRoleMembersController@update')->name('teamroles.members.update');
 });
+

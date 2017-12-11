@@ -21,13 +21,13 @@ class CreateRoleForTeamsTables extends Migration
         });
 
         // Add default roles
-        Tehcodedninja\Teamroles\Models\TeamRole::create(['name'=>'Owner', 'label'=>'owner']);
         Tehcodedninja\Teamroles\Models\TeamRole::create(['name'=>'Admin', 'label'=>'admin']);
+        Tehcodedninja\Teamroles\Models\TeamRole::create(['name'=>'Manager', 'label'=>'manager']);
         Tehcodedninja\Teamroles\Models\TeamRole::create(['name'=>'Member', 'label'=>'member']);
 
         // Add team role id to team user table
         Schema::table(\Config::get( 'teamwork.team_user_table' ), function (Blueprint $table) {
-            $table->integer('team_role_id')->unsigned()->default(\Config::get( 'teamroles.default_team_role'));
+            $table->integer('team_role_id')->unsigned()->default(\Config::get( 'teamrole.default_team_role'));
         });
 
         // Add team owner's to role table and give default role
@@ -36,7 +36,7 @@ class CreateRoleForTeamsTables extends Migration
 
             foreach($users as $user)
             {
-                // Legacy isOwnerOfTeam($team)
+                // Legacy isOwnerOfTeam($team) 
                 $team_model   = Config::get( 'teamwork.team_model' );
                 $team_key_name = ( new $team_model() )->getKeyName();
                 $isOwnerOfTeam = ( ( new $team_model )
@@ -48,7 +48,7 @@ class CreateRoleForTeamsTables extends Migration
                 if($isOwnerOfTeam)
                 {
                     // Add Owner role to team's Owner
-                    $user->changeTeamRole(\Config::get( 'teamroles.default_owner_role'), $team->id);
+                    $user->changeTeamRole(\Config::get( 'teamrole.default_owner_role'), $team->id);
                 }
             }
         });

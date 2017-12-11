@@ -28,6 +28,6 @@ class JoinedTeamListener
         $team_id = $event->getTeamId();
 
         // Do something with the user and team ID.
-        $user->updateTeamRole(\Config::get( 'teamroles.default_owner_role'), $team_id)
+        $user->updateTeamRole(\Config::get( 'teamrole.default_owner_role'), $team_id)
     }
 }

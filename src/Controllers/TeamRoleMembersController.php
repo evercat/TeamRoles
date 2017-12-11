@@ -21,7 +21,7 @@ class TeamRoleMembersController extends Controller
     {
         $team = Team::findOrFail($team_id);
         $user = User::findOrFail($user_id);
-        $roles = TeamRole::where('id', '!=', Config::get('teamroles.default_owner_role'))->get();
+        $roles = TeamRole::where('id', '!=', Config::get('teamrole.default_owner_role'))->get();
 
         return view('teamroles::members.edit')
             ->with('team', $team)

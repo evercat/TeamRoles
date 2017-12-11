@@ -37,23 +37,6 @@ trait UsedByUsers
         return $this->teamRoles()->wherePivot('team_id', $team_id)->first();
     }
 
-    /**
-     * Get the user's role for a team
-     *
-     * @param mixed $team
-     * @return boolean
-     */
-    public function isOwnerOfTeam($team)
-    {
-        $role = $this->teamRoleFor($team);
-
-        if($role->id === Config::get('teamroles.default_owner_role'))
-        {
-            return true;
-        }
-
-        return false;
-    }
 
     /**
      * Get the user's role for the current team

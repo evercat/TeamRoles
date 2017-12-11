@@ -35,8 +35,7 @@ class CreateRoleForTeamsTables extends Migration
             $users = $team->users;
 
             foreach($users as $user)
-            {
-                // Legacy isOwnerOfTeam($team) 
+            { 
                 $team_model   = Config::get( 'teamwork.team_model' );
                 $team_key_name = ( new $team_model() )->getKeyName();
                 $isOwnerOfTeam = ( ( new $team_model )

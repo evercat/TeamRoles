@@ -20,7 +20,7 @@
     },
     "minimum-stability": "dev",
     "require": {
-    	"mpociot/teamwork": "dev-master",
-            "laravel/framework": "5.5.*|5.6.*|5.7.*|5.8.*"
+    	"oliuz/teamwork": "^5.3",
+        "laravel/framework": "5.5.*|5.6.*|5.7.*|5.8.*"
     }
 }

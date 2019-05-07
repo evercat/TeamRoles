@@ -62,6 +62,22 @@ trait UsedByUsers
         return false;
     }
 
+        /**
+     * Get the user's role for a team
+     *
+     * @param mixed $team
+     * @return boolean
+     */
+    public function isOwnerOfTeam($team)
+    {
+        $role = $this->teamRoleFor($team);
+        if($role->id === Config::get('teamrole.default_owner_role'))
+        {
+            return true;
+        }
+        return false;
+    }
+    
     /**
      * Update user's role in a team
      *

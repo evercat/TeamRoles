@@ -1,4 +1,4 @@
-# Team Roles for mpociot/teamwork
+# Team Roles for oliuz/teamwork
 
 ## Installation
 
@@ -11,12 +11,12 @@ Pull this package in through Composer (file `composer.json`).
 ```js
 {
     "require": {
-        "tehcodedninja/teamroles": "1.0.3-alpha"
+        "oliuz/teamroles": "^2.0.0"
     }
 }
 ```
 The run `composer install` or `composer update`.
-Alternatively you can run `composer require tehcodedninja/teamroles` to install this package.
+Alternatively you can run `composer require oliuz/teamroles` to install this package.
 
 ### Service Provider
 

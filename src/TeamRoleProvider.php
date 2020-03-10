@@ -21,15 +21,36 @@ class TeamRoleProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([__DIR__.'/Database/migrations/2016_11_13_134303_create_role_for_teams_tables.php' =>
-            base_path('database/migrations/2016_11_13_134303_create_role_for_teams_tables.php')
-            ], 'teamrole-migrations');
-
-        $this->publishes([__DIR__.'/Config/teamrole.php' =>
-            config_path('teamrole.php')
-            ], 'teamrole-config');
+        $this->publishConfig();
+		
+		$this->publishMigration();
 
         $this->registerBladeExtensions();
+    }
+	
+	/**
+     * Publish Teamwork configuration
+     */
+    protected function publishConfig()
+    {
+        // Publish config files
+        $this->publishes([
+            __DIR__ . '/Config/teamrole.php' => config_path('teamrole.php'),
+        ], 'teamrole-config');
+    }
+	
+	/**
+     * Publish TeamRole migration
+     */
+    protected function publishMigration()
+    {
+        if (!class_exists('CreateRoleForTeamsTables')) {
+            // Publish the migration
+            $timestamp = date('Y_m_d_His', time());
+            $this->publishes([
+                __DIR__ . '/Database/migrations/2016_11_13_134303_create_role_for_teams_tables.php' => database_path('migrations/' . $timestamp . '_create_role_for_teams_tables.php'),
+            ], 'teamrole-migrations');
+        }
     }
 
     /**
@@ -39,6 +60,7 @@ class TeamRoleProvider extends ServiceProvider
      */
     public function register()
     {
+		$this->mergeConfig();
     }
 
     public function registerBladeExtensions()
@@ -50,5 +72,17 @@ class TeamRoleProvider extends ServiceProvider
         Blade::directive('endteamrole', function () {
             return "<?php endif; ?>";
         });
+    }
+	
+	/**
+     * Merges user's and teamwork's configs.
+     *
+     * @return void
+     */
+    protected function mergeConfig()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/Config/teamrole.php', 'teamrole'
+        );
     }
 }

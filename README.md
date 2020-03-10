@@ -11,7 +11,7 @@ Pull this package in through Composer (file `composer.json`).
 ```js
 {
     "require": {
-        "oliuz/teamroles": "^2.0.0"
+        "oliuz/teamroles": "^3.0.0"
     }
 }
 ```

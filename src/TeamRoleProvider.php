@@ -23,11 +23,11 @@ class TeamRoleProvider extends ServiceProvider
     {
         $this->publishes([__DIR__.'/Database/migrations/2016_11_13_134303_create_role_for_teams_tables.php' =>
             base_path('database/migrations/2016_11_13_134303_create_role_for_teams_tables.php')
-            ], 'migrations');
+            ], 'teamrole-migrations');
 
         $this->publishes([__DIR__.'/Config/teamrole.php' =>
-            config_path()
-            ], 'config');
+            config_path('teamrole.php')
+            ], 'teamrole-config');
 
         $this->registerBladeExtensions();
     }

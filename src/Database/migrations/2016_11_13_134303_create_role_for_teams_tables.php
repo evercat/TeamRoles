@@ -47,7 +47,7 @@ class CreateRoleForTeamsTables extends Migration
                 if($isOwnerOfTeam)
                 {
                     // Add Owner role to team's Owner
-                    $user->changeTeamRole(\Config::get( 'teamrole.default_owner_role'), $team->id);
+                    $user->updateTeamRole(\Config::get( 'teamrole.default_owner_role'), $team->id);
                 }
             }
         });
